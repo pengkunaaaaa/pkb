@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>网上银行-个人存款在线计算器</title>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    	#hh{
+    		background-color: blue;
+    		color: white;
+    	}
+    </style>
+    <script>
+      //定义一个函数，完成存款计算
+      function pk(){
+      	//1.获取存款金额
+      	var cunkuanjine =document.getElementById("amout").value;
+      	//上面这句话取到的值是"8000",不是数字.
+      	//"8000"-->8000
+      	var cunkuannum= parseInt(cunkuanjine);//字符串转成整数
+      	//2.开始计算
+      	//取得年利率
+      	var nianlilv=document.getElementById("year").value;
+      	//var lilvnum=parseFloat(nianlilv);(该转换不需要也行)
+      	var lixi=cunkuannum*nianlilv;
+      	var benxiheji=cunkuannum+lixi;
+      	//3.把计算的结果写入相应的文本框，用户就能看到。
+      	document.getElementById("lixi").value=lixi;
+      	document.getElementById("all").value=benxiheji;
+      }
+    </script>
+	</head>
+	<body>
+		<div class="container" align="center">
+			<table class="table table-bordered text-center">
+			<h1 align="center">个人网银-个人存款计算</h1>
+			<tr id="hh">
+				<td colspan="2">个人存款计算器</td>
+			</tr>
+			<tr >
+				<td class="text-center">存款年限</td>
+				<td>
+					<select id="year" class="form-control">
+						<option value="0.0175">一年(1.75%)</option>
+						<option value="0.0225">二年(2.25%)</option>
+						<option value="0.0275">三年(2.75%)</option>
+						<option value="0.0275">五年(2.75%)</option>
+						
+					</select>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>存款金额</td>
+				<td><input class="form-control" type="text" placeholder="请输入存款金额" id="amout"></td>
+			</tr>
+			<tr>
+				<td>所得利息</td>
+				<td >
+					<input id="lixi" type="text" class="form-control" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<td>本息合计</td>
+				<td >
+					<input id="all" type="text" class="form-control" readonly="readonly" />
+				</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button onclick="pk()" class="btn btn-primary form-control">计算</button>
+					</td>
+				</tr>
+			</table>
+			开发者：中北大学软件学院 彭堃
+		</div>
+	</body>
+</html>
